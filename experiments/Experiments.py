@@ -8,13 +8,13 @@ import tree as miptree
 from sklearn import tree
 
 # setup ------------------------------------------------------------------------
-timelimit = 60*5
+timelimit = 60*2
 datasets = ['balance-scale', 'breast-cancer', 'car-evaluation', 'hayes-roth',
             'house-votes-84', 'soybean-small', 'spect', 'tic-tac-toe',
             'monks-1', 'monks-2', 'monks-3']
 alpha = [0, 0.01, 0.1]
-depth = [2, 3, 4, 5]
-seeds = [37, 42, 53]
+depth = [2, 3, 4]
+seeds = [37]
 train_ratio = 0.5
 val_ratio = 0.25
 test_ratio = 0.25
@@ -76,7 +76,7 @@ for data in datasets:
             res_sk.to_csv('./res/sk.csv', index=False)
 
 # optimal classification tree --------------------------------------------------
-for data in datasets[0:2]:
+for data in datasets:
     for d in depth:
         for s in seeds:
             # load data
@@ -195,7 +195,7 @@ for data in datasets[0:2]:
                       'val acc:', val_acc, 'gap:', boct.optgap)
                 #print(row)
 
-seeds = [11, 23, 34, 45, 56, 67, 78, 89, 93, 5]
+# seeds = [11, 23, 34, 45, 56, 67, 78, 89, 93, 5]
 d = 3
 for data in datasets:
     for s in seeds:
