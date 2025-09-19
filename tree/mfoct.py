@@ -342,7 +342,9 @@ class maxFlowOptimalDecisionTreeClassifier:
         """
         obtain baseline accuracy by simply predicting the most popular class
         """
-        mode = stats.mode(y)[0][0]
+        # mode = stats.mode(y)[0][0]
+        mode_result = stats.mode(y, keepdims=True)
+        mode = mode_result.mode[0]
         return np.sum(y == mode)
 
     @staticmethod
